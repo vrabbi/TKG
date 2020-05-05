@@ -37,7 +37,11 @@ tkg create cluster multi-md-cls-01 --plan=multi-md
 currently there is no way to scale the machine deployments via tkg cli as we have edited the config. in order to scale we will edit the clusterapi deployed crd of the machine deployment via the management cluster.
 
 1. connect to the context of the management cluster via kubectl.
-     kubectl config use-context <MGMT CLUSTER CONTEXT NAME>
+     
+     **kubectl config use-context \<MGMT CLUSTER CONTEXT NAME\>**
 2. list the machine deployment objects via the following command
-     kubectl get machinedeployments.cluster.x-k8s.io -A
-3. now that we have found the machine deployment we want to scale
+
+     **kubectl get machinedeployments.cluster.x-k8s.io -A**
+3. now that we have found the machine deployment we want to scale we will edit the machine deployment
+     **kubectl edit machinedeployments.cluster.x-k8s.io -n \<NAMESPACE WHERE THE CLUSTER IS LOCATED\> \<MACHINE DEPLOYMENT NAME\>
+
