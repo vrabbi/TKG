@@ -32,3 +32,12 @@ These environment variable can be set either as environment variables in your sy
 ## Creating a cluster
 to create a cluster named multi-md-cls-01 using this yaml you can run a command like this:
 tkg create cluster multi-md-cls-01 --plan=multi-md
+
+## Scaling the worker nodes count for a specific machine deployment
+currently there is no way to scale the machine deployments via tkg cli as we have edited the config. in order to scale we will edit the clusterapi deployed crd of the machine deployment via the management cluster.
+
+1. connect to the context of the management cluster via kubectl.
+     kubectl config use-context <MGMT CLUSTER CONTEXT NAME>
+2. list the machine deployment objects via the following command
+     kubectl get machinedeployments.cluster.x-k8s.io -A
+3. now that we have found the machine deployment we want to scale
